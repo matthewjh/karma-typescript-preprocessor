@@ -73,7 +73,7 @@ function tsc(file, content, typings, options, callback, log) {
 	var args = _.clone(options);
 	var input  = file.originalPath + '.ktp.ts';
 	var output = file.originalPath + '.ktp.js';
-	log.debug(file.originalPath);
+	log.error(file.originalPath);
 	file.outputPath = output + '.ktp.js';
 	file.sourceMapPath = output + '.map';
 
