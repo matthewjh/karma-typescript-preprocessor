@@ -75,7 +75,7 @@ function tsc(file, content, typings, options, callback, log) {
 	var relativePath = path.relative('./', file.originalPath);
 	var tmpFolderPath = path.join(tmpFolder, path.dirname(relativePath) + '/');
 	var input  = path.join(tmpFolder, relativePath + '.ktp.ts');
-	var output = path.join(tmpFolder, relativePath + '.ktp.ts');
+	var output = path.join(tmpFolder, relativePath + '.ktp.js');
 	log.error(input);
 	file.outputPath = output + '.ktp.js';
 	file.sourceMapPath = output + '.map';
