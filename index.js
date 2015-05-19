@@ -4,6 +4,8 @@ var fs = require('fs'),
 	glob = require('glob'),
 	compile = require('node-tsc').compile;
 
+var tmpFolder = '.tmp-ktp/';
+
 var createTypeScriptPreprocessor = function(args, config, logger, helper) {
 	config = config || {};
 
@@ -12,8 +14,6 @@ var createTypeScriptPreprocessor = function(args, config, logger, helper) {
 		bare: true,
 		sourceMap: false
 	};
-
-	var tmpFolder = '.tmp-ktp/';
 
 	var typingPatterns = [].concat(config.typings || []);
 	var typings = _.flatten(typingPatterns.map(function (pattern) {
