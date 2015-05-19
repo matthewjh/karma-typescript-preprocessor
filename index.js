@@ -1,5 +1,6 @@
 var fs = require('fs'),
 	path = require('path'),
+	mkdirp = require('mkdirp'),
 	_ = require('lodash'),
 	glob = require('glob'),
 	compile = require('node-tsc').compile;
@@ -87,7 +88,7 @@ function tsc(file, content, typings, options, callback, log) {
 
 	log.error(tmpFolderPath);
 	if (!fs.existsSync(tmpFolderPath)) {
-		fs.mkdirSync(tmpFolderPath);
+		mkdirp.sync(tmpFolderPath);
 	}
 
 	log.error('BEFORE TEXT DUMP to' + input);
