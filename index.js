@@ -71,10 +71,10 @@ function sourceMapAsDataUri(content, file, callback) {
 
 function tsc(file, content, typings, options, callback, log) {
 	var args = _.clone(options);
-	var input  = file.originalPath + '.ktp.ts';
-	var output = file.originalPath + '.ktp.js';
 	var relativePath = path.relative('./', file.originalPath);
-	log.error(relativePath);
+	var input  = path.join(tmpFolder, relativePath + '.ktp.ts');
+	var output = path.join(tmpFolder, relativePath + '.ktp.ts');
+	log.error(input);
 	file.outputPath = output + '.ktp.js';
 	file.sourceMapPath = output + '.map';
 
