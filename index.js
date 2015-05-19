@@ -72,6 +72,7 @@ function sourceMapAsDataUri(content, file, callback) {
 function tsc(file, content, typings, options, callback, log) {
 	var args = _.clone(options);
 	var relativePath = path.relative('./', file.originalPath);
+	var tmpFolderPath = path.join(tmpFolder, path.dirName(relativePath));
 	var input  = path.join(tmpFolder, relativePath + '.ktp.ts');
 	var output = path.join(tmpFolder, relativePath + '.ktp.ts');
 	log.error(input);
@@ -83,6 +84,11 @@ function tsc(file, content, typings, options, callback, log) {
 	}
 
 	var opts = {files: [input].concat(typings), args: args};
+
+	log.error(tmpFolderPath);
+	if (!fs.existsSync(tmpFolderPath)) {
+		fs.mkdirSync(tmpFolderPath);
+	}
 
 	log.error('BEFORE TEXT DUMP to' + input);
 	fs.writeFileSync(input, content);
