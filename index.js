@@ -13,6 +13,8 @@ var createTypeScriptPreprocessor = function(args, config, logger, helper) {
 		sourceMap: false
 	};
 
+	var tmpFolder = '.tmp-ktp/';
+
 	var typingPatterns = [].concat(config.typings || []);
 	var typings = _.flatten(typingPatterns.map(function (pattern) {
 		return glob.sync(pattern);
@@ -71,6 +73,7 @@ function tsc(file, content, typings, options, callback, log) {
 	var args = _.clone(options);
 	var input  = file.originalPath + '.ktp.ts';
 	var output = file.originalPath + '.ktp.js';
+	log.debug(file.originalPath);
 	file.outputPath = output + '.ktp.js';
 	file.sourceMapPath = output + '.map';
 
