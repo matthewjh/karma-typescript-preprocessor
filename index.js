@@ -84,9 +84,10 @@ function tsc(file, content, typings, options, callback, log) {
 
 	var opts = {files: [input].concat(typings), args: args};
 
-	log.error('BEFORE TEXT DUMP');
+	log.error('BEFORE TEXT DUMP to' + input);
 	fs.writeFileSync(input, content);
 	log.error('AFTER TEXT DUMP');
+
 	if (options.compiler) {
 		delete args.compiler;
 		opts.compiler = options.compiler;
