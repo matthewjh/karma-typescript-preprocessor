@@ -86,14 +86,11 @@ function tsc(file, content, typings, options, callback, log) {
 
 	var opts = {files: [input].concat(typings), args: args};
 
-	log.error(tmpFolderPath);
 	if (!fs.existsSync(tmpFolderPath)) {
 		mkdirp.sync(tmpFolderPath);
 	}
 
-	log.error('BEFORE TEXT DUMP to' + input);
 	fs.writeFileSync(input, content);
-	log.error('AFTER TEXT DUMP');
 
 	if (options.compiler) {
 		delete args.compiler;
@@ -106,6 +103,7 @@ function tsc(file, content, typings, options, callback, log) {
 
 	fs.unlinkSync(input);
 
+	log.error('here' + output);
 	if (fs.existsSync(file.path)) {
 		fs.unlinkSync(file.path);
 	}
